@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            font-family: cursive;
+            display: flex;
+            flex-direction: column; 
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('HBD bg.png');
+            padding: 20px; 
+            overflow-y: auto; 
+            background-size: contain;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto; 
+            margin-bottom: 20px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        }
+
+        .typing-text {
+            font-size: 20px; 
+            overflow: hidden;
+            max-width: 100%;
+            white-space: normal; 
+            word-break: break-word; 
+            text-align: center; 
+            margin-bottom: 20px;
+            color:black;
+        }
+
+        @media (max-width: 600px) {
+            .typing-text {
+                font-size: 18px; 
+            }
+        }
+
+        audio {
+            display: none; 
+        }
+        
+        #surprise-button, #whatsapp-button {
+            display: none; 
+            margin-top: 10px; /* Tambahkan jarak antara tombol */
+            padding: 10px 20px;
+            font-size: 20px;
+            background: linear-gradient(to bottom, black, black, white);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        #surprise-button{
+            display: none;
+            background:linear-gradient(to top,black, black, white);
+        }
+
+        #surprise-button:hover {
+            background-color: grey;
+        }
+        
+        #whatsapp-button:hover {
+            background-color: #20b958;
+        }
+
+        .button-container {
+            margin-top: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="YourImg.jpg" alt="Foto"> 
+    <div class="typing-text" id="typing"></div>
+
+    <audio id="background-music" autoplay loop>
+        <source src="Backsound.mp" type="audio/mpeg"> 
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="button-container">
+        <button id="surprise-button" onclick="location.href='Flowers.html'">Surprise</button>
+        <button id="whatsapp-button" onclick="window.location.href='https://wa.me/6282114073679?text=*Pesan Rahasia*  Sebenarnya dari dulu tu aku itu kangen banget, cuman aku ga tau cara nyampeinnya gimana, dari yang wa aku di blockir, akun ig kamu tiba tiba ilang, ml kamu udaa off, aku bingung lewat mana lagi aku chat kamunya, terus yaa semenjak kamu ga ada tu lumayan banyak yang deketin aku, tapi gatau kenapaa we asa itu teh biasa aja gabisa bikin hati aku kebuka lagi, daa gatauu kenapaa oge semenjak kamu makin sering pake hijab tuu yaa aku makin tertarik ke kamuu. Terus kalo sekarang seandainya bisa juga aku pengen balikan sama kamu, semisal engga jugaa gapapaa, kita masi bisa jadi temen berbagi cerita'">Kirim pesan buat Ibnu!</button>
+    </div>
+
+    <script>
+        const texts = [
+            "Ciee yang hari ini ultah...",
+            "Selamat ulang tahun Keysha Deti Abtien Rosita",
+            "Semoga di tahun dan bulan ini",
+            "Tuhan mewujudkan doa doa mu yang belum terwujud",
+            "Dan semoga di tahun ini",
+            "Kamu menjadi lebih baik dari sebelumnya",
+            "Untuk kamuu",
+            "Happy birthday 🎉"
+        ];
+
+        let index = 0;
+        const typingElement = document.getElementById('typing');
+        const typingSpeed = 50;
+        const surpriseButton = document.getElementById('surprise-button');
+        const whatsappButton = document.getElementById('whatsapp-button');
+
+        function typeText() {
+            if (index < texts.length) {
+                const paragraph = document.createElement('p'); 
+                paragraph.textContent = ''; 
+                typingElement.appendChild(paragraph); 
+                let charIndex = 0;
+
+                function typeChar() {
+                    if (charIndex < texts[index].length) {
+                        paragraph.textContent += texts[index].charAt(charIndex);
+                        charIndex++;
+                        setTimeout(typeChar, typingSpeed);
+                    } else {
+                        index++; 
+                        if (index < texts.length) {
+                            setTimeout(typeText, 1000); 
+                        } else {
+                            surpriseButton.style.display = 'block';
+                            whatsappButton.style.display = 'block';
+                        }
+                    }
+                }
+
+                typeChar();
+            }
+        }
+
+        typeText();
+    </script>
+
+</body>
+</html>
